@@ -8,4 +8,7 @@ urlpatterns = [
     path('author/<slug:slug>', views.author_page, name='author_page'),
     path('search/', views.search_posts, name='search_posts'),
     path('about/', views.about, name='about'),
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+    path('signup/', views.signup, name='signup'),
 ]

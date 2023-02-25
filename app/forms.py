@@ -1,6 +1,8 @@
 from django import forms
-from app.models import Comments, Subscribe
+from app.models import Comments, Subscribe, Profile
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -24,3 +26,16 @@ class SubscribeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].widget.attrs['placeholder'] = 'Enter your email.'
+
+
+class SignupForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = {'username', 'first_name', 'last_name', 'email'}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'User Name'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'First Name'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Last Name'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'

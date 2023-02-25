@@ -30,20 +30,27 @@
         <a href="{% url 'index' %}" class="logo">
           <i class="fa-brands fa-blogger"></i>
         </a>
+
         <div class="links">
           <a href="{% url 'index' %}">Home</a>
           <a href="{% url 'about' %}">About</a>
           <a href="#">All Post</a>
         </div>
+        {% if user.is_authenticated %}
         <div class="action-btn">
-          <a href="pages/login.html"
-            ><button class="btn btn-scoundary">Login</button></a
-          >
-          <a href="pages/signup.html">
-            <button class="btn btn-primary">Sign Up</button></a
-          >
+          <a href="{% url 'logout' %}">
+            <button class="btn btn-primary">Log Out</button></a>
           <i class="uil uil-align-center-alt menu" onclick="menu()"></i>
         </div>
+        {% else %}
+        <div class="action-btn">
+          <a href="{% url 'login' %}"
+            ><button class="btn btn-scoundary">Login</button></a>
+          <a href="{% url 'signup' %}">
+            <button class="btn btn-primary">Sign Up</button></a>
+          <i class="uil uil-align-center-alt menu" onclick="menu()"></i>
+        </div>
+        {% endif %}
       </div>
     </header>
     <main>

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Blog | Sign UP{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="page-name">
+      <a href="#" class="learn">
+        <span class="material-icons"> keyboard_return </span> Go back
+      </a>
+      <h1>Sign Up</h1>
+    </div>
+
+    <form method="POST" class="form">
+      {% csrf_token %}
+      <center>
+        <div class="logo f-logo">
+          <i class="fa-brands fa-blogger"></i>
+        </div>
+          <div>
+            <div class="search-bar s-active input">
+              {{signupform.username}}
+              <div class="animated-search">
+                <i class="uil uil-user"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="search-bar s-active input">
+              {{signupform.first_name}}
+              <div class="animated-search">
+                <i class="uil uil-user"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="search-bar s-active input">
+              {{signupform.last_name}}
+              <div class="animated-search">
+                <i class="uil uil-user"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="search-bar s-active input">
+              {{signupform.email}}
+              <div class="animated-search">
+                <i class="uil uil-envelope-alt"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="search-bar s-active input">
+              <input type="password" placeholder="Create password" name = "password" required = "id_password" />
+              <div class="animated-search">
+                <i class="uil uil-key-skeleton"></i>
+              </div>
+          </div>
+          <div>
+            <div class="search-bar s-active input">
+              <input type="password" placeholder="Confirm password" name = "confirm_password" required = "id_confirm_password" />
+              <div class="animated-search">
+                <i class="uil uil-key-skeleton"></i>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary rounded">
+            SIGN UP <span class="material-icons"> arrow_right_alt </span>
+          </button>
+          <center>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+          </center>
+          {% if errors %}
+            <div class="field-error">
+              <p>
+                {{errors}}
+              </p>
+            </div>
+            {% endif %}
+      </center>
+    </form>
+{% endblock content %}
