@@ -52,6 +52,7 @@ def signup(request):
             success = 'Signup Successful please login to continue'
         else:
             errors = signupform.errors
+    print(signupform.errors)
     context = {
         'signupform' : signupform,
         'success' : success,
@@ -80,6 +81,7 @@ def index(request):
         subscribe_form = SubscribeForm(request.POST)
         if subscribe_form.is_valid():
             subscribe_form.save()
+            request.session['Subscribed'] = True
             subscribe_successful = 'Subscribed Successfully'
             subscribe_form = SubscribeForm()
 
